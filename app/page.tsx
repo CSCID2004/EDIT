@@ -51,10 +51,13 @@ export default function Workspace() {
     setSaved(false);
   };
 
-  const pageTitle = useMemo(() => ({
-    overview: "Workspace overview", editor: "Website Editor", pages: "Pages", media: "Media Library",
-    services: "Services", integrations: "Integrations", environment: "Environment", security: "Security",
-  }[active] || "Workspace"), [active]);
+  const pageTitle = useMemo(() => {
+    const titles: Record<string, string> = {
+      overview: "Workspace overview", editor: "Website Editor", pages: "Pages", media: "Media Library",
+      services: "Services", integrations: "Integrations", environment: "Environment", security: "Security",
+    };
+    return titles[active] || "Workspace";
+  }, [active]);
 
   function saveDraft() {
     try {
