@@ -7,7 +7,8 @@ Membangun EDIT sebagai private website workspace terpisah untuk mengelola konten
 - Selesai: Fondasi Next.js dan antarmuka workspace/editor homepage telah digabung ke `main`.
 - Selesai: GitHub Actions `EDIT CI` berhasil menjalankan `npm install` dan `npm run build` pada commit fitur terakhir sebelum merge.
 - Selesai: PR #1 berhasil di-merge ke `main`.
-- Sedang dikerjakan: Menyiapkan deployment pertama ke project Vercel `edit`; project masih belum terhubung langsung ke GitHub.
+- Selesai: Token desain CSS-ID disalin ke `styles/tokens.css` dan dipakai oleh workspace; font body diselaraskan ke Inter, heading Space Grotesk.
+- Sedang dikerjakan: Memverifikasi integrasi design tokens melalui GitHub Actions build.
 - Tertunda: Deployment belum dibuat karena kuota Vercel Hobby 100 deployment/hari terlampaui; retry window 24 jam sejak sekitar 2026-11-11 09:00 UTC.
 - Tertunda: Autentikasi Founder/passkey, database production, API penyimpanan/publish, revision history, koneksi design system CSS-ID, dan modul Pages/Media/Services/Integrations/Environment/Security.
 
@@ -21,13 +22,14 @@ Membangun EDIT sebagai private website workspace terpisah untuk mengelola konten
 - Branch fitur diselaraskan dengan perubahan package.json dan tsconfig.json pada main sebelum merge; tidak ada perubahan production.
 
 ## DAFTAR LANGKAH BERIKUTNYA
-1. Periksa ulang Vercel deployment quota setelah retry window berlalu.
-2. Buat preview deployment dari `CSCID2004/EDIT@main` ke project Vercel `edit`, lalu periksa build logs dan URL.
-3. Verifikasi proteksi akses workspace dan tampilan responsif pada deployment.
-4. Rancang autentikasi Founder/passkey dan database persisten; jangan menyimpan credential di source code.
-5. Implementasikan API draft/publish, revision history, dan integrasi design system CSS-ID.
-6. Lanjutkan modul Pages, Media, Services, Integrations, Environment, dan Security.
-7. Jangan mengganti /server atau menyentuh domain production sebelum seluruh fitur diuji dan pengguna meminta perpindahan.
+1. Selesaikan build CI dan merge integrasi design system CSS-ID.
+2. Periksa ulang Vercel deployment quota setelah retry window berlalu.
+3. Buat preview deployment dari `CSCID2004/EDIT@main` ke project Vercel `edit`, lalu periksa build logs dan URL.
+4. Verifikasi proteksi akses workspace dan tampilan responsif pada deployment.
+5. Rancang autentikasi Founder/passkey dan database persisten; jangan menyimpan credential di source code.
+6. Implementasikan API draft/publish dan revision history.
+7. Lanjutkan modul Pages, Media, Services, Integrations, Environment, dan Security.
+8. Jangan mengganti /server atau menyentuh domain production sebelum seluruh fitur diuji dan pengguna meminta perpindahan.
 
 ## INFO TEKNIS
 - Repository: `CSCID2004/EDIT`
