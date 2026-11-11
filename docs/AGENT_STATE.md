@@ -5,7 +5,8 @@ Membangun EDIT sebagai private website workspace terpisah untuk mengelola konten
 
 ## STATUS SAAT INI
 - Selesai: Repository EDIT di-bootstrap; branch fitur dibuat; fondasi Next.js dan antarmuka workspace/editor homepage ditambahkan.
-- Sedang dikerjakan: Build verification, PR, integrasi project Vercel edit.
+- Selesai: PR #1 dibuat; workflow GitHub Actions untuk build ditambahkan; project Vercel edit disetel ke Node.js 22.x.
+- Sedang dikerjakan: Menunggu hasil CI GitHub dan menyiapkan integrasi deployment.
 - Tertunda: Autentikasi Founder/passkey, database production, API penyimpanan/publish, revision history, koneksi design system CSS-ID, dan penggantian /server setelah seluruh uji lulus.
 
 ## KEPUTUSAN & ASUMSI PENTING
@@ -16,10 +17,10 @@ Membangun EDIT sebagai private website workspace terpisah untuk mengelola konten
 - Node.js runtime dipatok ke versi 22.x pada project Vercel karena versi 26.x yang terdeteksi belum didukung project settings.
 
 ## DAFTAR LANGKAH BERIKUTNYA
-1. Verifikasi build aplikasi dan perbaiki error.
-2. Buat PR ke main dan merge setelah verifikasi lulus.
+1. Pastikan workflow GitHub Actions menjalankan build; perbaiki error jika ada.
+2. Merge PR #1 hanya setelah build lulus.
 3. Hubungkan project Vercel `edit` ke repository EDIT tanpa membuat project duplikat.
-4. Deploy dan cek URL/log.
+4. Deploy dan cek URL/log ketika kuota deployment Vercel tersedia.
 5. Rancang integrasi database/auth menggunakan environment variables tanpa membocorkan nilainya.
 6. Integrasikan CSS-ID sebagai design source dan lanjutkan modul Pages, Media, Services, Integrations, Environment, Security.
 
@@ -31,11 +32,15 @@ Membangun EDIT sebagai private website workspace terpisah untuk mengelola konten
 - Vercel project ID: `prj_13oPzjkk5Nxmni8p2U08123k00Qs`
 - Team ID: `team_HCbbgdhYjUWrfCeGx2BbhkZ8`
 - Vercel URL: belum ada deployment.
+- PR: https://github.com/CSCID2004/EDIT/pull/1
 - Design source: `CSCID2004/CSS-ID`
 
 ## MASALAH YANG BELUM SELESAI
 - Repository EDIT sebelumnya kosong; bootstrap commit dibuat di main agar branch fitur dapat dibuat.
+- PR #1 belum di-merge karena build belum dapat diverifikasi.
 - Project Vercel edit belum terhubung ke GitHub dan belum memiliki deployment.
 - Tidak ada environment variables pada project edit.
+- Vercel deployment API menolak preview build karena kuota gratis 100 deployment/hari sudah terlampaui; retryAfter 24 jam.
+- GitHub Actions run belum muncul untuk commit terakhir saat dicek.
 - Belum ada database atau mekanisme autentikasi Founder.
 - Vercel project sebelumnya terdeteksi menggunakan Node 26.x; perlu disetel ke Node 22.x.
