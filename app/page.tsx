@@ -38,12 +38,43 @@ export default function Workspace() {
   const [preview, setPreview] = useState(true);
   const [notice, setNotice] = useState("Workspace preview is ready");
   const [mobileNav, setMobileNav] = useState(false);
+  const [authorized, setAuthorized] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem("cscid-edit-draft");
-      if (raw) setContent({ ...initialContent, ...JSON.parse(raw) });
-    } catch { /* Ignore invalid local draft and keep safe defaults. */ }
+    let active = true;
+    (async () => {
+      try {
+        const response = await fetch("/api/server/content", { cache: "no-store", credentials: "same-origin" });
+        if (response.status === 401) {
+          if (active) setNotice("Founder login diperlukan. Masuk melalui /server terlebih dahulu.");
+          return;
+        }
+        if (!response.ok) throw new Error("Konten website tidak dapat dimuat dari SERVER.");
+        const data = await response.json();
+        const live = data?.content || {};
+        if (active) {
+          setContent({
+            eyebrow: live.heroEyebrow ?? initialContent.eyebrow,
+            title: live.heroTitle ?? initialContent.title,
+            accent: live.heroAccent ?? initialContent.accent,
+            description: live.heroDescription ?? initialContent.description,
+            primaryCta: live.primaryButton ?? initialContent.primaryCta,
+            secondaryCta: live.contactButton ?? initialContent.secondaryCta,
+            whatsappUrl: live.whatsapp ?? initialContent.whatsappUrl,
+            imageTitle: live.overlayTitle ?? initialContent.imageTitle,
+            imageDescription: live.overlaySubtitle ?? initialContent.imageDescription,
+          });
+          setAuthorized(true);
+          setNotice("Terhubung ke database konten CSCID.");
+        }
+      } catch (error) {
+        if (active) setNotice(error instanceof Error ? error.message : "Koneksi SERVER gagal.");
+      } finally {
+        if (active) setLoading(false);
+      }
+    })();
+    return () => { active = false; };
   }, []);
 
   const update = (key: keyof Content, value: string) => {
@@ -59,13 +90,38 @@ export default function Workspace() {
     return titles[active] || "Workspace";
   }, [active]);
 
-  function saveDraft() {
+  async function saveDraft() {
     try {
-      window.localStorage.setItem("cscid-edit-draft", JSON.stringify(content));
+      setSaved(false);
+      const response = await fetch("/api/server/content", {
+        method: "PUT",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: {
+            heroEyebrow: content.eyebrow,
+            heroTitle: content.title,
+            heroAccent: content.accent,
+            heroDescription: content.description,
+            primaryButton: content.primaryCta,
+            contactButton: content.secondaryCta,
+            whatsapp: content.whatsappUrl,
+            overlayTitle: content.imageTitle,
+            overlaySubtitle: content.imageDescription,
+          },
+        }),
+      });
+      if (response.status === 401) {
+        setAuthorized(false);
+        setNotice("Sesi Founder tidak ditemukan. Masuk kembali melalui /server.");
+        return;
+      }
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data?.ok) throw new Error(data?.error || "Konten gagal diterbitkan.");
       setSaved(true);
-      setNotice("Draft tersimpan di browser ini. Database production belum terhubung.");
-    } catch {
-      setNotice("Browser tidak dapat menyimpan draft. Periksa kapasitas penyimpanan.");
+      setNotice("Konten berhasil disimpan ke Neon dan diterbitkan ke website CSCID.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Gagal menyimpan konten ke SERVER.");
     }
   }
 
@@ -92,7 +148,7 @@ export default function Workspace() {
 
         <div className="content-wrap">
           <div className="page-heading"><div><p className="overline">CONTROL PLANE <span>·</span> WEBSITE OPERATIONS</p><h1>{pageTitle}</h1><p className="subheading">Kelola pengalaman website CSCID dari satu ruang kerja.</p></div>
-            <div className="heading-actions"><button className="button button-quiet" onClick={() => { setContent(initialContent); setSaved(false); }}>Reset preview</button><button className="button button-primary" onClick={saveDraft}>Save draft <span>↗</span></button></div>
+            <div className="heading-actions"><button className="button button-quiet" onClick={() => { setContent(initialContent); setSaved(false); }}>Reset preview</button><button className="button button-primary" onClick={saveDraft}>Save & publish <span>↗</span></button></div>
           </div>
 
           {active === "overview" && <>
@@ -126,9 +182,9 @@ export default function Workspace() {
                 <label>Card title<input value={content.imageTitle} onChange={(e) => update("imageTitle", e.target.value)} /></label>
                 <label>Card description<input value={content.imageDescription} onChange={(e) => update("imageDescription", e.target.value)} /></label>
               </div>
-              <div className="editor-footer"><span>{saved ? "Draft tersimpan di browser" : "Perubahan belum disimpan"}</span><button className="button button-primary" onClick={saveDraft}>Save draft</button></div>
+              <div className="editor-footer"><span>{saved ? "Published to CSCID database" : "Perubahan belum disimpan"}</span><button className="button button-primary" onClick={saveDraft}>Save & publish</button></div>
             </div>
-            {preview && <div className="preview-column"><div className="preview-label"><span>LIVE PREVIEW</span><span>DESKTOP · 1440 PX</span></div><div className="site-preview"><div className="preview-nav"><div className="preview-logo">CSCID<span>.</span></div><div className="preview-navlinks">ABOUT　 PRODUCTS　 QUALITY　 CONTACT</div><div className="preview-nav-cta">INQUIRE ↗</div></div><div className="preview-hero"><div className="preview-copy"><span className="preview-eyebrow">{content.eyebrow}</span><h2>{content.title} <em>{content.accent}</em></h2><p>{content.description}</p><div className="preview-buttons"><span>{content.primaryCta} ↗</span><span>{content.secondaryCta} →</span></div></div><div className="preview-visual"><div className="visual-lines" /><div className="visual-label">INDONESIAN ORIGIN<br />GLOBAL REACH</div><div className="visual-card"><b>{content.imageTitle}</b><small>{content.imageDescription}</small></div></div></div><div className="preview-foot"><span>COCONUT SHELL CHARCOAL</span><span>01 — 04</span></div></div><div className="preview-note"><span>ⓘ</span> Preview ini menggunakan konten lokal. Belum mengubah website production.</div></div>}
+            {preview && <div className="preview-column"><div className="preview-label"><span>LIVE PREVIEW</span><span>DESKTOP · 1440 PX</span></div><div className="site-preview"><div className="preview-nav"><div className="preview-logo">CSCID<span>.</span></div><div className="preview-navlinks">ABOUT　 PRODUCTS　 QUALITY　 CONTACT</div><div className="preview-nav-cta">INQUIRE ↗</div></div><div className="preview-hero"><div className="preview-copy"><span className="preview-eyebrow">{content.eyebrow}</span><h2>{content.title} <em>{content.accent}</em></h2><p>{content.description}</p><div className="preview-buttons"><span>{content.primaryCta} ↗</span><span>{content.secondaryCta} →</span></div></div><div className="preview-visual"><div className="visual-lines" /><div className="visual-label">INDONESIAN ORIGIN<br />GLOBAL REACH</div><div className="visual-card"><b>{content.imageTitle}</b><small>{content.imageDescription}</small></div></div></div><div className="preview-foot"><span>COCONUT SHELL CHARCOAL</span><span>01 — 04</span></div></div><div className="preview-note"><span>ⓘ</span> Preview mengikuti data dari SERVER. Simpan & publish untuk memperbarui website.</div></div>}
           </div>}
 
           {active !== "overview" && active !== "editor" && <div className="placeholder-panel"><div className="placeholder-icon">◈</div><h2>{pageTitle}</h2><p>Modul ini sudah masuk struktur workspace dan akan diaktifkan setelah koneksi data, autentikasi, dan integrasi backend selesai.</p><span className="coming-soon">MODULE FOUNDATION · IN PROGRESS</span></div>}
