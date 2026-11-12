@@ -125,6 +125,9 @@ export default function Workspace() {
     }
   }
 
+  if (loading) return <main className="shell"><section className="main-area"><div className="content-wrap"><h1>Connecting to CSCID SERVER…</h1><p>Memeriksa sesi Founder dan database konten.</p></div></section></main>;
+  if (!authorized) return <main className="shell"><section className="main-area"><div className="content-wrap"><div className="placeholder-panel"><div className="placeholder-icon">◇</div><h2>Founder access required</h2><p>Workspace EDIT hanya dapat digunakan setelah autentikasi Founder di pusat kendali CSCID.</p><a className="button button-primary" href="/server">Open Founder Login →</a><p className="subheading">{notice}</p></div></div></section></main>;
+
   return (
     <main className="shell">
       <aside className={`sidebar ${mobileNav ? "sidebar-open" : ""}`}>
