@@ -10,6 +10,7 @@ type Content = {
   primaryCta: string;
   secondaryCta: string;
   whatsappUrl: string;
+  heroImage: string;
   imageTitle: string;
   imageDescription: string;
 };
@@ -22,6 +23,7 @@ const initialContent: Content = {
   primaryCta: "Explore Products",
   secondaryCta: "Contact Us",
   whatsappUrl: "",
+  heroImage: "/Coconut-Shell-Charcoal.jpg",
   imageTitle: "From Indonesia, with purpose",
   imageDescription: "Responsible sourcing · Consistent quality · Global supply",
 };
@@ -62,6 +64,7 @@ export default function Workspace() {
             primaryCta: live.primaryButton ?? initialContent.primaryCta,
             secondaryCta: live.contactButton ?? initialContent.secondaryCta,
             whatsappUrl: live.whatsapp ?? initialContent.whatsappUrl,
+            heroImage: live.heroImage ?? initialContent.heroImage,
             imageTitle: live.overlayTitle ?? initialContent.imageTitle,
             imageDescription: live.overlaySubtitle ?? initialContent.imageDescription,
           });
@@ -106,6 +109,7 @@ export default function Workspace() {
             primaryButton: content.primaryCta,
             contactButton: content.secondaryCta,
             whatsapp: content.whatsappUrl,
+            heroImage: content.heroImage,
             overlayTitle: content.imageTitle,
             overlaySubtitle: content.imageDescription,
           },
@@ -181,13 +185,15 @@ export default function Workspace() {
                 <label>Secondary button<input value={content.secondaryCta} onChange={(e) => update("secondaryCta", e.target.value)} /></label>
                 <label>WhatsApp URL<input placeholder="https://wa.me/62..." value={content.whatsappUrl} onChange={(e) => update("whatsappUrl", e.target.value)} /></label>
               </div>
-              <div className="editor-section"><div className="editor-section-heading"><span>03</span><div><h3>Visual card</h3><p>Teks pendamping untuk area visual hero.</p></div></div>
+              <div className="editor-section"><div className="editor-section-heading"><span>03</span><div><h3>Gambar & visual</h3><p>Ubah sumber gambar utama dan teks pendamping visual.</p></div></div>
+                <label>Gambar hero — URL HTTPS atau path lokal<input placeholder="/Coconut-Shell-Charcoal.jpg" value={content.heroImage} onChange={(e) => update("heroImage", e.target.value)} /></label>
+                <small style={{display:"block",marginTop:6,color:"#8f867e",fontSize:9,lineHeight:1.6}}>Gunakan URL HTTPS atau path file yang sudah tersedia di folder public CSCID. Upload file langsung belum dikonfigurasi.</small>
                 <label>Card title<input value={content.imageTitle} onChange={(e) => update("imageTitle", e.target.value)} /></label>
                 <label>Card description<input value={content.imageDescription} onChange={(e) => update("imageDescription", e.target.value)} /></label>
               </div>
               <div className="editor-footer"><span>{saved ? "Published to CSCID database" : "Perubahan belum disimpan"}</span><button className="button button-primary" onClick={saveDraft}>Save & publish</button></div>
             </div>
-            {preview && <div className="preview-column"><div className="preview-label"><span>LIVE PREVIEW</span><span>DESKTOP · 1440 PX</span></div><div className="site-preview"><div className="preview-nav"><div className="preview-logo">CSCID<span>.</span></div><div className="preview-navlinks">ABOUT　 PRODUCTS　 QUALITY　 CONTACT</div><div className="preview-nav-cta">INQUIRE ↗</div></div><div className="preview-hero"><div className="preview-copy"><span className="preview-eyebrow">{content.eyebrow}</span><h2>{content.title} <em>{content.accent}</em></h2><p>{content.description}</p><div className="preview-buttons"><span>{content.primaryCta} ↗</span><span>{content.secondaryCta} →</span></div></div><div className="preview-visual"><div className="visual-lines" /><div className="visual-label">INDONESIAN ORIGIN<br />GLOBAL REACH</div><div className="visual-card"><b>{content.imageTitle}</b><small>{content.imageDescription}</small></div></div></div><div className="preview-foot"><span>COCONUT SHELL CHARCOAL</span><span>01 — 04</span></div></div><div className="preview-note"><span>ⓘ</span> Preview mengikuti data dari SERVER. Simpan & publish untuk memperbarui website.</div></div>}
+            {preview && <div className="preview-column"><div className="preview-label"><span>LIVE PREVIEW</span><span>DESKTOP · 1440 PX</span></div><div className="site-preview"><div className="preview-nav"><div className="preview-logo">CSCID<span>.</span></div><div className="preview-navlinks">ABOUT　 PRODUCTS　 QUALITY　 CONTACT</div><div className="preview-nav-cta">INQUIRE ↗</div></div><div className="preview-hero"><div className="preview-copy"><span className="preview-eyebrow">{content.eyebrow}</span><h2>{content.title} <em>{content.accent}</em></h2><p>{content.description}</p><div className="preview-buttons"><span>{content.primaryCta} ↗</span><span>{content.secondaryCta} →</span></div></div><div className="preview-visual"><img src={content.heroImage || "/Coconut-Shell-Charcoal.jpg"} alt="Pratinjau gambar hero CSCID" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover"}} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} /><div className="visual-card"><b>{content.imageTitle}</b><small>{content.imageDescription}</small></div></div></div><div className="preview-foot"><span>COCONUT SHELL CHARCOAL</span><span>01 — 04</span></div></div><div className="preview-note"><span>ⓘ</span> Preview mengikuti data dari SERVER. Simpan & publish untuk memperbarui website.</div></div>}
           </div>}
 
           {active !== "overview" && active !== "editor" && <div className="placeholder-panel"><div className="placeholder-icon">◈</div><h2>{pageTitle}</h2><p>Modul ini sudah masuk struktur workspace dan akan diaktifkan setelah koneksi data, autentikasi, dan integrasi backend selesai.</p><span className="coming-soon">MODULE FOUNDATION · IN PROGRESS</span></div>}
