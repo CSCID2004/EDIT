@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "site": {
+    "name": "Coconut Shell Charcoal Indonesia",
+    "locale": "id-ID",
+    "pages": {
+      "home": {
+        "hero": {
+          "eyebrow": "Penyedia Kualitas Terbaik",
+          "title": "Arang Batok Kelapa",
+          "accent": "Premium",
+          "description": "Menyediakan arang berkualitas tinggi dengan standar internasional. Solusi energi terpercaya untuk kebutuhan industri, restoran, dan ekspor.",
+          "primaryButton": "Lihat Produk",
+          "primaryHref": "#produk",
+          "contactButton": "Hubungi Kami",
+          "whatsappUrl": "https://wa.me/6285168152525",
+          "image": "/Coconut-Shell-Charcoal.jpg",
+          "imageAlt": "Coconut Shell Charcoal Indonesia",
+          "overlayTitle": "Sertifikasi ISO 9001",
+          "overlaySubtitle": "Standar mutu internasional",
+          "overlayBadge": "Tersertifikasi"
+        }
+      }
+    },
+    "assets": {
+      "hero": "/Coconut-Shell-Charcoal.jpg"
+    },
+    "seo": {
+      "title": "Coconut Shell Charcoal Indonesia",
+      "description": "Kebutuhan Industri, Restoran, dan Ekspor Internasional.",
+      "locale": "id_ID"
+    }
+  },
+  "metadata": {
+    "source": "CSCID2004/EDIT",
+    "status": "published",
+    "updatedAt": "2026-11-13T00:00:00.000Z"
+  }
+}
