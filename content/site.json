@@ -19,6 +19,200 @@
           "overlayTitle": "Sertifikasi ISO 9001",
           "overlaySubtitle": "Standar mutu internasional",
           "overlayBadge": "Tersertifikasi"
+        },
+        "about": {
+          "eyebrow": "Tentang Kami",
+          "titleLine1": "Komitmen Menghasilkan",
+          "titleLine2": "Arang Batok Kelapa Premium",
+          "paragraphs": [
+            "Didirikan pada 30 Oktober 2026. Kami berdedikasi sebagai penyedia Coconut Shell Charcoal berkualitas Premium.",
+            "Melalui pengawasan mutu yang ketat, kami selalu memastikan konsistensi kalori dan kualitas produk guna memenuhi kebutuhan pasar B2B, baik untuk skala domestik maupun ekspor."
+          ],
+          "buttonLabel": "Lihat Produk Kami",
+          "buttonHref": "#produk",
+          "image": "/Factory.jpg",
+          "imageAlt": "Fasilitas produksi PT Tunas Kembar Abadi",
+          "stats": [
+            {
+              "value": 300,
+              "suffix": "",
+              "label": "Ton / Tahun"
+            },
+            {
+              "value": 6,
+              "suffix": "",
+              "label": "Pekerja"
+            },
+            {
+              "value": 98,
+              "suffix": "%",
+              "label": "Kepuasan Pelanggan"
+            }
+          ]
+        },
+        "products": {
+          "eyebrow": "Produk Kami",
+          "title": "Katalog Produk",
+          "description": "Harga diperbarui realtime mengikuti indeks pasar. Geser atau klik kartu untuk informasi selengkapnya.",
+          "items": [
+            {
+              "name": "Natural",
+              "subName": "Coconut Shell Charcoal",
+              "badge": "Best Seller",
+              "markup": 0,
+              "image": "/products/Natural.jpg",
+              "specs": [
+                {
+                  "label": "Kadar Air",
+                  "value": "4,37%",
+                  "progress": 20.37
+                },
+                {
+                  "label": "Kadar Abu",
+                  "value": "1,52%",
+                  "progress": 10.52
+                },
+                {
+                  "label": "Zat Terbang",
+                  "value": "11,37%",
+                  "progress": 71.37
+                },
+                {
+                  "label": "Karbon Tetap",
+                  "value": "81,39%",
+                  "progress": 81.39
+                },
+                {
+                  "label": "Nilai Kalori",
+                  "value": "?%",
+                  "progress": 0
+                }
+              ]
+            },
+            {
+              "name": "Karbon Aktif",
+              "subName": "Coconut Shell Charcoal",
+              "badge": "Product",
+              "markup": 0.25,
+              "image": "/products/Carbon-Active.png",
+              "specs": [
+                {
+                  "label": "Kadar Air",
+                  "value": "4,5%",
+                  "progress": 20
+                },
+                {
+                  "label": "Kadar Abu",
+                  "value": "2,5%",
+                  "progress": 15
+                },
+                {
+                  "label": "Volatile Matter",
+                  "value": "15%",
+                  "progress": 30
+                },
+                {
+                  "label": "Iodine Number",
+                  "value": "750 mg/g",
+                  "progress": 85
+                },
+                {
+                  "label": "Serap Benzena",
+                  "value": "25%",
+                  "progress": 40
+                }
+              ]
+            },
+            {
+              "name": "Briket",
+              "subName": "Charcoal Briquettes",
+              "badge": "Costume",
+              "markup": 0.5,
+              "image": "/products/Briquettes.jpg",
+              "specs": [
+                {
+                  "label": "Nilai Kalori",
+                  "value": "7.200+ kcal/kg",
+                  "progress": 92
+                },
+                {
+                  "label": "Durasi Bakar",
+                  "value": "3 - 5 Jam",
+                  "progress": 90
+                },
+                {
+                  "label": "Kadar Abu",
+                  "value": "< 2.5%",
+                  "progress": 20
+                }
+              ]
+            }
+          ]
+        },
+        "whyUs": {
+          "eyebrow": "Keunggulan Kami",
+          "title": "Proses Terintegrasi dari Hulu ke Hilir",
+          "description": "Kami mengkombinasikan kapasitas produksi skala besar dengan sistem kontrol mutu dan alur kerja yang profesional untuk menjamin kelancaran energi bisnis Anda.",
+          "timelineTitle": "Alur Proses Kerja",
+          "timelineSubtitle": "Ketentuan pemesanan Coconut Shell Charcoal",
+          "tiles": [
+            {
+              "value": "25 T",
+              "label": "Kapasitas / Bulan",
+              "desc": "Menjamin ketersediaan pasokan Coconut Shell Charcoal skala besar."
+            },
+            {
+              "value": "98%",
+              "label": "Kepuasan Klien",
+              "desc": "Retensi tinggi dari mitra industri nasional."
+            },
+            {
+              "value": "0 T",
+              "label": "Volume Ekspor",
+              "desc": "Pengiriman global ke Asia Timur & Timur Tengah."
+            },
+            {
+              "value": "ISO 9001",
+              "label": "Sertifikasi Mutu",
+              "desc": "Jaminan kontrol kualitas bertaraf internasional."
+            }
+          ],
+          "stages": [
+            {
+              "num": "01",
+              "title": "Konsultasi",
+              "desc": "Spesifikasi teknis ditentukan bersama, meliputi fixed carbon, kadar air, kadar abu, dan ukuran."
+            },
+            {
+              "num": "02",
+              "title": "Paid Sample",
+              "desc": "Sampel diberikan secara berbayar untuk pengujian pada tungku dan laboratorium sebelum PO diterbitkan."
+            },
+            {
+              "num": "03",
+              "title": "Pembayaran",
+              "desc": "Harga berbasis EXW sesuai volume pemesanan. Pembayaran sebesar 100% wajib dilakukan pada saat PO diterbitkan."
+            },
+            {
+              "num": "04",
+              "title": "Produksi",
+              "desc": "Produksi diselesaikan dalam waktu 30 hari sejak PO diterbitkan. Pengambilan barang dapat dilakukan secara parsial."
+            },
+            {
+              "num": "05",
+              "title": "Finish",
+              "desc": "Barang diambil langsung di pabrik (EXW) atau dikirim ke lokasi pembeli sesuai jadwal yang disepakati."
+            }
+          ]
+        },
+        "cta": {
+          "title": "Siap Bermitra dengan Kami?",
+          "description": "Dapatkan penawaran terbaik untuk kebutuhan arang Anda. Tim kami siap membantu konsultasi dari pemilihan produk hingga pengiriman ke lokasi.",
+          "contactLabel": "Hubungi Kami",
+          "contactHref": "https://wa.me/6285168152525",
+          "catalogLabel": "Download Katalog",
+          "catalogHref": "#produk",
+          "partnersTitle": "Jaringan Kami"
         }
       }
     },
@@ -29,11 +223,98 @@
       "title": "Coconut Shell Charcoal Indonesia",
       "description": "Kebutuhan Industri, Restoran, dan Ekspor Internasional.",
       "locale": "id_ID"
+    },
+    "navigation": {
+      "primary": [
+        {
+          "label": "Beranda",
+          "href": "#beranda"
+        },
+        {
+          "label": "Tentang",
+          "href": "#tentang"
+        },
+        {
+          "label": "Produk",
+          "href": "#produk"
+        },
+        {
+          "label": "Keunggulan",
+          "href": "#keunggulan"
+        },
+        {
+          "label": "Kontak",
+          "href": "#kontak"
+        }
+      ],
+      "company": [
+        {
+          "label": "Domain",
+          "href": "/domain",
+          "deskripsi": "Ruang lingkup bisnis, produk, dan aktivitas Coconut Shell Charcoal Indonesia."
+        },
+        {
+          "label": "Karier",
+          "href": "/karier",
+          "deskripsi": "Bidang pekerjaan dan peluang karier bersama Coconut Shell Charcoal Indonesia."
+        },
+        {
+          "label": "Blog",
+          "href": "/blog",
+          "deskripsi": "Artikel, edukasi produk, dan wawasan industri coconut shell charcoal."
+        },
+        {
+          "label": "Certificate",
+          "href": "/certificate",
+          "deskripsi": "Dokumen legalitas dan dokumentasi perusahaan yang dapat diverifikasi."
+        },
+        {
+          "label": "Gallery",
+          "href": "/gallery",
+          "deskripsi": "Arsip visual produk, proses produksi, dan aktivitas perusahaan."
+        }
+      ]
+    },
+    "partners": [
+      {
+        "name": "Valeed.ID",
+        "logoAlt": "Valeed.ID"
+      },
+      {
+        "name": "PT. Bank Central Asia Tbk",
+        "logoAlt": "BCA"
+      },
+      {
+        "name": "PT. Industri Agribisnis Indonesia",
+        "logoAlt": "PT Industri Agribisnis Indonesia"
+      }
+    ],
+    "footer": {
+      "description": "Produsen dan distributor arang tempurung kelapa berkualitas tinggi untuk kebutuhan industri, restoran, dan ekspor internasional.",
+      "navigationTitle": "Navigasi",
+      "companyTitle": "Perusahaan",
+      "contactTitle": "Kontak",
+      "contacts": [
+        {
+          "label": "Info@CoconutShellCharcoal.ID",
+          "href": "mailto:Info@CoconutShellCharcoal.ID"
+        },
+        {
+          "label": "+62 851 681 52525",
+          "href": "tel:+6285168152525"
+        },
+        {
+          "label": "Jl. Sarikaya No.217 RT.6/RW.14 Depok Jaya Kecamatan Pancoran Mas Depok Jawa Barat 16432",
+          "href": "#"
+        }
+      ],
+      "copyright": "© 2026 Coconut Shell Charcoal Indonesia. Seluruh Hak Dilindungi.",
+      "tagline": "Premium Indonesia"
     }
   },
   "metadata": {
     "source": "CSCID2004/EDIT",
     "status": "published",
-    "updatedAt": "2026-11-13T00:00:00.000Z"
+    "updatedAt": "2026-11-13T07:03:48.341Z"
   }
 }
